@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Glovo Challenge</string>
+
+    <string name="title_activity_maps">@string/app_name</string>
+    <string name="title_activity_location">Location</string>
+
+    <string name="detail_city" formatted="true">City: %s</string>
+    <string name="detail_language" formatted="true">Language: %s</string>
+    <string name="detail_currency" formatted="true">Currency: %s</string>
+
+    <string name="generic_error">Ops! Something went wrong. Please make sure that your internet connection is enabled.</string>
+
+    <string name="dialog_location_title">Welcome to Glovo Challenge</string>
+    <string name="dialog_location_explanation">Please share with us your location, so we could show you the available delivery areas.</string>
+    <string name="dialog_location_share">Share location</string>
+    <string name="dialog_location_not_now">Not now</string>
+</resources>

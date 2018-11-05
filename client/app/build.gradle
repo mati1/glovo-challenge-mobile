@@ -1,0 +1,71 @@
+apply plugin:'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.glovo.challenge"
+        minSdkVersion 16
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField 'String', 'BASE_URL', '"https://glovo-challenge-server.herokuapp.com/api/"'
+        }
+        debug {
+            buildConfigField 'String', 'BASE_URL', '"https://glovo-challenge-server.herokuapp.com/api/"'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+}
+
+ext {
+    supportLibraryVersion = '28.0.0'
+    constraintLibVersion = '1.1.3'
+    googlePlayServicesVersion = '16.0.0'
+    googleMapsUtisVersion = '0.5'
+    rxJavaVersion = '2.2.3'
+    rxAndroidVersion = '2.1.0'
+    okHttp3Version = '3.11.0'
+    retrofitVersion = '2.4.0'
+    lottieVersion = '2.7.0'
+    junitVersion = '4.12'
+    mockitoVersion = '2.7.22'
+    runnerVersion = '1.0.2'
+    espressoVersion = '3.0.2'
+}
+
+dependencies {
+    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$supportLibraryVersion"
+    implementation "com.android.support.constraint:constraint-layout:$constraintLibVersion"
+
+    implementation "com.google.android.gms:play-services-maps:$googlePlayServicesVersion"
+    implementation "com.google.android.gms:play-services-location:$googlePlayServicesVersion"
+    implementation "com.google.maps.android:android-maps-utils:$googleMapsUtisVersion"
+
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+
+    implementation "com.squareup.okhttp3:okhttp:$okHttp3Version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okHttp3Version"
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoVersion"
+
+    androidTestImplementation "com.android.support.test:runner:$runnerVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"
+}
