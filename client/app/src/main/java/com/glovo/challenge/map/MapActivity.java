@@ -96,7 +96,7 @@ public class MapActivity extends BaseActivity<MapPresenter>
         final boolean granted = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) ==
             PackageManager.PERMISSION_GRANTED;
 
-        getPresenter().checkPermission(granted);
+        getPresenter().onPermissionChange(granted);
     }
 
     @Override

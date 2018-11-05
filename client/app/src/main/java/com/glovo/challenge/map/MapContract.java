@@ -41,7 +41,7 @@ public class MapContract {
 
     abstract static class Presenter extends BasePresenter<View> {
 
-        abstract void checkPermission(boolean granted);
+        abstract void onPermissionChange(boolean granted);
 
         abstract void onRequestPermission(boolean granted);
 

@@ -32,7 +32,7 @@ public class MapPresenter extends MapContract.Presenter {
     }
 
     @Override
-    void checkPermission(final boolean granted) {
+    void onPermissionChange(final boolean granted) {
         if (granted) {
             mLocationModel.getCities(new BaseObserver<List<City>>() {
                 @Override
@@ -54,7 +54,7 @@ public class MapPresenter extends MapContract.Presenter {
     @Override
     void onRequestPermission(final boolean granted) {
         if (granted) {
-            getView().locateUser();
+            onPermissionChange(true);
         } else {
             mLocationModel.getCities(new BaseObserver<List<City>>() {
                 @Override
@@ -85,6 +85,13 @@ public class MapPresenter extends MapContract.Presenter {
 
         final City city = getView().getCurrentCity();
 
+        if (mFirstTimeLocated) {
+            mFirstTimeLocated = false;
+            if (city == null) {
+                getView().showManualLocation();
+            }
+        }
+
         loadCityDetail(city);
     }
 
@@ -97,13 +104,6 @@ public class MapPresenter extends MapContract.Presenter {
 
     void loadCityDetail(City city) {
         getView().showLoadingCityDetail();
-
-        if (mFirstTimeLocated) {
-            mFirstTimeLocated = false;
-            if (city == null) {
-                getView().showManualLocation();
-            }
-        }
 
         if (city == null) {
             getView().showCityDetailUnknown();
